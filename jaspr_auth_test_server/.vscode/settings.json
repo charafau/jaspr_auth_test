@@ -1,0 +1,15 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 8090,
+            "askForPassword": true,
+            "driver": "PostgreSQL",
+            "name": "jaspr_auth_test",
+            "database": "jaspr_auth_test",
+            "username": "postgres",
+            "connectionTimeout": 3
+        }
+    ]
+}
