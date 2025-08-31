@@ -2,6 +2,8 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 import 'package:website_river_auth/pages/login.dart';
 import 'package:website_river_auth/pages/register.dart';
+import 'package:website_river_auth/pages/todo/todo_create.dart';
+import 'package:website_river_auth/pages/todo/todo_list.dart';
 import 'package:website_river_auth/pages/verify.dart';
 
 import 'components/header.dart';
@@ -32,6 +34,16 @@ class App extends StatelessComponent {
                 path: '/',
                 title: 'Home',
                 builder: (context, state) => const Home()),
+            Route(
+              path: '/todos',
+              title: 'Todos',
+              builder: (context, state) => TodoList(),
+            ),
+            Route(
+              path: '/todos_create',
+              title: 'Todo Create',
+              builder: (context, state) => TodoCreate(),
+            ),
             Route(
                 path: '/login',
                 title: 'Login',

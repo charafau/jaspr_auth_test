@@ -11,7 +11,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
 import '../greeting_endpoint.dart' as _i2;
-import 'package:serverpod_auth_server/serverpod_auth_server.dart' as _i3;
+import '../todo/todo_endpoint.dart' as _i3;
+import 'package:serverpod_auth_server/serverpod_auth_server.dart' as _i4;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -22,7 +23,13 @@ class Endpoints extends _i1.EndpointDispatch {
           server,
           'greeting',
           null,
-        )
+        ),
+      'todo': _i3.TodoEndpoint()
+        ..initialize(
+          server,
+          'todo',
+          null,
+        ),
     };
     connectors['greeting'] = _i1.EndpointConnector(
       name: 'greeting',
@@ -48,6 +55,39 @@ class Endpoints extends _i1.EndpointDispatch {
         )
       },
     );
-    modules['serverpod_auth'] = _i3.Endpoints()..initializeEndpoints(server);
+    connectors['todo'] = _i1.EndpointConnector(
+      name: 'todo',
+      endpoint: endpoints['todo']!,
+      methodConnectors: {
+        'getTodos': _i1.MethodConnector(
+          name: 'getTodos',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['todo'] as _i3.TodoEndpoint).getTodos(session),
+        ),
+        'createTodo': _i1.MethodConnector(
+          name: 'createTodo',
+          params: {
+            'text': _i1.ParameterDescription(
+              name: 'text',
+              type: _i1.getType<String>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['todo'] as _i3.TodoEndpoint).createTodo(
+            session,
+            params['text'],
+          ),
+        ),
+      },
+    );
+    modules['serverpod_auth'] = _i4.Endpoints()..initializeEndpoints(server);
   }
 }

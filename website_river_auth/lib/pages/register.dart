@@ -1,7 +1,6 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_riverpod/jaspr_riverpod.dart';
 import 'package:jaspr_router/jaspr_router.dart';
-import 'package:website_river_auth/providers/login_notifier.dart';
 import 'package:website_river_auth/providers/register_notifier.dart';
 
 class Register extends StatefulComponent {

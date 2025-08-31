@@ -18,6 +18,7 @@ class Header extends StatelessComponent {
       nav([
         for (var route in [
           (label: 'Home', path: '/'),
+          (label: 'Todos', path: '/todos'),
           (label: 'Login', path: '/login'),
           (label: 'Register', path: '/register'),
           (label: 'Verify', path: '/verify'),

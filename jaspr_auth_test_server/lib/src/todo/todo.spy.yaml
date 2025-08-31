@@ -1,0 +1,8 @@
+
+class: Todo
+table: todo
+fields:
+    text: String
+    done: bool, default=true
+    ### The user id of the user who created the recipe
+    userId: int?, scope=serverOnly
