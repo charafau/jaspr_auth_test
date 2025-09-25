@@ -23,11 +23,10 @@ class VerifyState extends State<Verify> {
   Component build(BuildContext context) {
     final state = context.watch(verifyNotifierProvider);
 
-    return Component.fragment([
+    return fragment([
       h2([
         text('Verify'),
       ]),
-  
       form(method: FormMethod.post, [
         label(htmlFor: 'email', [
           text('Email:'),
@@ -64,10 +63,9 @@ class VerifyState extends State<Verify> {
             text('Verify code must not be null'),
           ]),
       ]),
-  
       button(onClick: () async {
         final success = await notifier.verify();
-  
+
         if (success) {
           context.push('/');
         }

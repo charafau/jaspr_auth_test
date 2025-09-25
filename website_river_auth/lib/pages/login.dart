@@ -28,11 +28,10 @@ class LoginState extends State<Login> {
 
   @override
   Component build(BuildContext context) {
-    return Component.fragment([
+    return fragment([
       h2([
         text('Login'),
       ]),
-  
       form(method: FormMethod.post, [
         label(htmlFor: 'email', [
           text('Email:'),
@@ -81,7 +80,6 @@ class LoginState extends State<Login> {
         br(),
         br(),
       ]),
-  
       button(onClick: () async {
         final notifier = context.read(loginNotifierProvider.notifier);
         final success = await notifier.signIn(

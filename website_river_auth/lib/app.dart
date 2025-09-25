@@ -25,7 +25,7 @@ class App extends StatelessComponent {
     return div(classes: 'main', [
       Router(routes: [
         ShellRoute(
-          builder: (context, state, child) => Component.fragment([
+          builder: (context, state, child) => fragment([
             const Header(),
             child,
           ]),

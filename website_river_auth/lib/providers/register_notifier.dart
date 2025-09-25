@@ -46,19 +46,19 @@ class RegisterNotifier extends Notifier<RegisterNotifierState> {
     }
   }
 
-  void updateEmail(value) {
+  void updateEmail(String value) {
     state = state.copyWith(email: value);
   }
 
-  void updateUserName(value) {
+  void updateUserName(String value) {
     state = state.copyWith(username: value);
   }
 
-  void updatePassword(value) {
+  void updatePassword(String value) {
     state = state.copyWith(password: value);
   }
 
-  void updatePasswordRepeat(value) {
+  void updatePasswordRepeat(String value) {
     state = state.copyWith(passwordRepeat: value);
   }
 }

@@ -38,11 +38,11 @@ class VerifyNotifier extends Notifier<VerifyNotifierState> {
     }
   }
 
-  void updateVerifyCode(value) {
+  void updateVerifyCode(String value) {
     state = state.copyWith(verify: value);
   }
 
-  void updateEmail(value) {
+  void updateEmail(String value) {
     state = state.copyWith(email: value);
   }
 }

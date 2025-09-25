@@ -23,11 +23,10 @@ class RegisterState extends State<Register> {
   Component build(BuildContext context) {
     final state = context.watch(registerNotifierProvider);
 
-    return Component.fragment([
+    return fragment([
       h2([
         text('Register'),
       ]),
-  
       form(method: FormMethod.post, [
         label(htmlFor: 'userName', [
           text('User Name:'),
@@ -102,10 +101,9 @@ class RegisterState extends State<Register> {
         br(),
         br(),
       ]),
-  
       button(onClick: () async {
         final success = await notifier.register();
-  
+
         if (success) {
           context.push('/');
         }

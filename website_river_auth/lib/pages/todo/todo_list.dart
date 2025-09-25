@@ -24,17 +24,13 @@ class TodoListState extends State<TodoList> {
   Component build(BuildContext context) {
     final data = context.watch(todoNotifierProvider);
 
-    return Component.fragment([
+    return fragment([
       div([
-        a([text('Create todo')], href: '/todos_create')
+        a(href: '/todos_create', [text('Create todo')])
       ]),
-  
-      if (data.hasValue) 
+      if (data.hasValue)
         // data.value!.todos
-        for (var todo in data.value!.todos) 
-          div([text(todo.text)]),
-        
-      
+        for (var todo in data.value!.todos) div([text(todo.text)]),
     ]);
   }
 }

@@ -36,7 +36,6 @@ class Header extends StatelessComponent {
                 return div([
                   text('Is Logged In: ${data.isLoggedIn} '),
                   a(
-                    [text('Logout')],
                     href: '#',
                     onClick: () async {
                       final notifier =
@@ -46,6 +45,7 @@ class Header extends StatelessComponent {
                         context.push('/');
                       }
                     },
+                    [text('Logout')],
                   )
                 ]);
               }, error: (Object error, StackTrace stackTrace) {
