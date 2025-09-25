@@ -2,7 +2,6 @@ import 'package:jaspr/jaspr.dart';
 import 'package:serverpod_auth_client/serverpod_auth_client.dart'
     hide VoidCallback;
 import 'package:website_river_auth/login/jaspr_serverpod_session_manager.dart';
-import 'package:universal_web/web.dart' as web;
 
 class JasprEmailLoginController {
   Caller caller;

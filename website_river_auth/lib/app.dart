@@ -14,7 +14,7 @@ class App extends StatelessComponent {
   const App({super.key});
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
+  Component build(BuildContext context) {
     // This method is rerun every time the component is rebuilt.
     //
     // Each build method can return multiple child components as an [Iterable]. The recommended approach
@@ -22,10 +22,10 @@ class App extends StatelessComponent {
     // create and return a [List] here.
 
     // Renders a <div class="main"> html element with children.
-    yield div(classes: 'main', [
+    return div(classes: 'main', [
       Router(routes: [
         ShellRoute(
-          builder: (context, state, child) => Fragment(children: [
+          builder: (context, state, child) => Component.fragment([
             const Header(),
             child,
           ]),

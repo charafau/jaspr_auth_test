@@ -14,42 +14,44 @@ class TodoState extends State<TodoCreate> {
   String _todoText = '';
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield h2([
-      text('Todo'),
-    ]);
-
-    yield form(method: FormMethod.post, [
-      label(htmlFor: 'text', [
-        text('Text:'),
+  Component build(BuildContext context) {
+    return Component.fragment([
+      h2([
+        text('Todo'),
       ]),
-      br(),
-      input(
-        id: 'text',
-        name: 'text',
-        type: InputType.text,
-        onChange: (value) {
-          // notifier.updateUserName(value);
-          setState(
-            () {
-              _todoText = value;
-            },
-          );
-        },
-      ),
-    ]);
-
-    yield button(onClick: () async {
-      if (_todoText.isNotEmpty) {
-        final notifier = context.read(todoNotifierProvider.notifier);
-
-        final result = await notifier.createTodo(_todoText);
-        if (result) {
-          context.push('/todos');
+  
+      form(method: FormMethod.post, [
+        label(htmlFor: 'text', [
+          text('Text:'),
+        ]),
+        br(),
+        input(
+          id: 'text',
+          name: 'text',
+          type: InputType.text,
+          onChange: (value) {
+            // notifier.updateUserName(value);
+            setState(
+              () {
+                _todoText = value;
+              },
+            );
+          },
+        ),
+      ]),
+  
+      button(onClick: () async {
+        if (_todoText.isNotEmpty) {
+          final notifier = context.read(todoNotifierProvider.notifier);
+  
+          final result = await notifier.createTodo(_todoText);
+          if (result) {
+            context.push('/todos');
+          }
         }
-      }
-    }, [
-      text('Create'),
+      }, [
+        text('Create'),
+      ]),
     ]);
   }
 }

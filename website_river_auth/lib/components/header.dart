@@ -8,13 +8,13 @@ class Header extends StatelessComponent {
   const Header({super.key});
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
+  Component build(BuildContext context) {
     var activePath = RouteState.of(context).location;
 
     final AsyncValue<LoginNotifierState> loginState =
         context.watch(loginNotifierProvider);
 
-    yield header([
+    return header([
       nav([
         for (var route in [
           (label: 'Home', path: '/'),

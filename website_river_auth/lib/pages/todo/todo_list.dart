@@ -21,19 +21,21 @@ class TodoListState extends State<TodoList> {
   List<Todo> todos = [];
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
+  Component build(BuildContext context) {
     final data = context.watch(todoNotifierProvider);
 
-    yield div([
-      a([text('Create todo')], href: '/todos_create')
+    return Component.fragment([
+      div([
+        a([text('Create todo')], href: '/todos_create')
+      ]),
+  
+      if (data.hasValue) 
+        // data.value!.todos
+        for (var todo in data.value!.todos) 
+          div([text(todo.text)]),
+        
+      
     ]);
-
-    if (data.hasValue) {
-      // data.value!.todos
-      for (var todo in data.value!.todos) {
-        yield div([text(todo.text)]);
-      }
-    }
   }
 }
 

@@ -12,8 +12,8 @@ class CounterState extends State<Counter> {
   int count = 0;
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield div(classes: 'counter', [
+  Component build(BuildContext context) {
+    return div(classes: 'counter', [
       button(
         onClick: () {
           setState(() => count--);

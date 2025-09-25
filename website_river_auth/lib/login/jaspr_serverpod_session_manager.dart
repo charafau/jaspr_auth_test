@@ -3,7 +3,6 @@ import 'dart:typed_data';
 
 import 'package:jaspr/jaspr.dart';
 import 'package:serverpod_auth_client/serverpod_auth_client.dart';
-import 'package:universal_web/web.dart' as web;
 import 'package:website_river_auth/login/jaspr_authentication_key_manager.dart';
 
 const _prefsKey = 'serverpod_userinfo_key';

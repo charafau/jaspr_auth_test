@@ -6,6 +6,7 @@
 import 'package:jaspr/browser.dart';
 import 'package:jaspr_auth_test_client/jaspr_auth_test_client.dart';
 import 'package:jaspr_riverpod/jaspr_riverpod.dart';
+import 'package:jaspr_riverpod/misc.dart';
 // Imports the [App] component.
 import 'package:website_river_auth/app.dart';
 import 'package:website_river_auth/login/jaspr_authentication_key_manager.dart';

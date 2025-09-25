@@ -20,58 +20,60 @@ class VerifyState extends State<Verify> {
   }
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
+  Component build(BuildContext context) {
     final state = context.watch(verifyNotifierProvider);
 
-    yield h2([
-      text('Verify'),
-    ]);
-
-    yield form(method: FormMethod.post, [
-      label(htmlFor: 'email', [
-        text('Email:'),
+    return Component.fragment([
+      h2([
+        text('Verify'),
       ]),
-      br(),
-      input(
-        id: 'email',
-        name: 'email',
-        type: InputType.email,
-        onChange: (value) {
-          notifier.updateEmail(value);
-        },
-      ),
-      if (state.hasEmailError)
-        span(classes: 'error', [
-          text('Email must not be null'),
+  
+      form(method: FormMethod.post, [
+        label(htmlFor: 'email', [
+          text('Email:'),
         ]),
-      br(),
-      br(),
-      label(htmlFor: 'verify', [
-        text('Verify Code:'),
+        br(),
+        input(
+          id: 'email',
+          name: 'email',
+          type: InputType.email,
+          onChange: (value) {
+            notifier.updateEmail(value);
+          },
+        ),
+        if (state.hasEmailError)
+          span(classes: 'error', [
+            text('Email must not be null'),
+          ]),
+        br(),
+        br(),
+        label(htmlFor: 'verify', [
+          text('Verify Code:'),
+        ]),
+        br(),
+        input(
+          id: 'verify',
+          name: 'verify',
+          type: InputType.text,
+          onChange: (value) {
+            notifier.updateVerifyCode(value);
+          },
+        ),
+        if (state.hasVerifyError)
+          span(classes: 'error', [
+            text('Verify code must not be null'),
+          ]),
       ]),
-      br(),
-      input(
-        id: 'verify',
-        name: 'verify',
-        type: InputType.text,
-        onChange: (value) {
-          notifier.updateVerifyCode(value);
-        },
-      ),
-      if (state.hasVerifyError)
-        span(classes: 'error', [
-          text('Verify code must not be null'),
-        ]),
-    ]);
-
-    yield button(onClick: () async {
-      final success = await notifier.verify();
-
-      if (success) {
-        context.push('/');
-      }
-    }, [
-      text('Verify'),
+  
+      button(onClick: () async {
+        final success = await notifier.verify();
+  
+        if (success) {
+          context.push('/');
+        }
+      }, [
+        text('Verify'),
+      ]),
     ]);
   }
 }
